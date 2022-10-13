@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "c555db34-2248-4410-950c-18fc3759bb25",
+    "colId": "8cf07af6-8fa5-4a3e-ae1a-065d4bd3a3da",
+    "containerId": "",
+    "name": "All products",
+    "url": "http://localhost:3000/products/6",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-13T17:57:21.193Z",
+    "modified": "2022-10-13T18:01:14.169Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
