@@ -15,7 +15,20 @@ const findById = async (productId) => {
   return product;
 };
 
+const insert = async (product) => {
+  const columns = Object.keys(product).map((key) => `${key}`).join(', ');
+  const placeholders = Object.keys(product).map((_key) => '?').join(', ');
+
+  const [{ insertId }] = await connection.execute(
+    `INSERT INTO products (${columns}) VALUE (${placeholders})`,
+    [...Object.values(product)],
+  );
+
+  return insertId;
+};
+
 module.exports = {
   findAll,
   findById,
+  insert,
 };
