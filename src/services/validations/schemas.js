@@ -4,4 +4,12 @@ const addProductSchema = Joi.object({
   name: Joi.string().min(5).required(),
 });
 
-module.exports = addProductSchema;
+const addSaleSchema = Joi.array().items(Joi.object({
+  productId: Joi.number().integer().min(1).required(),
+  quantity: Joi.number().integer().min(1).required(),
+}));
+
+module.exports = {
+  addProductSchema,
+  addSaleSchema,
+};

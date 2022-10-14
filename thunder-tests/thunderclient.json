@@ -26,5 +26,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "6247b422-dfbd-4196-bad4-cce713ba7c1a",
+    "colId": "8cf07af6-8fa5-4a3e-ae1a-065d4bd3a3da",
+    "containerId": "",
+    "name": "sales by id",
+    "url": "http://localhost:3000/sales/999",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-10-14T18:43:09.374Z",
+    "modified": "2022-10-14T18:43:29.742Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
