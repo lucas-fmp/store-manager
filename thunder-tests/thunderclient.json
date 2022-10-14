@@ -40,5 +40,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "4cc5f28c-62dd-42bf-9930-0a88df0667f6",
+    "colId": "8cf07af6-8fa5-4a3e-ae1a-065d4bd3a3da",
+    "containerId": "",
+    "name": "product",
+    "url": "http://localhost:3000/products/1",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2022-10-14T21:55:04.369Z",
+    "modified": "2022-10-14T21:55:20.067Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
