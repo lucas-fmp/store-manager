@@ -18,9 +18,9 @@ const getSale = async (req, res) => {
 };
 
 const addSale = async (req, res) => {
-  const bodyInput = req.body;
+  const salesInput = req.body;
 
-  const { type, message } = await services.salesServices.addSale(bodyInput);
+  const { type, message } = await services.salesServices.addSale(salesInput);
 
   if (type) return res.status(errorMap.mapError(type)).json({ message });
   res.status(201).json(message);

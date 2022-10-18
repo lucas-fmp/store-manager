@@ -12,19 +12,33 @@ const findById = async (productId) => {
   return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
 };
 
-const addSale = async (bodyInput) => {
-  const error = validateNewSale(bodyInput);
+const verifyProduct = async (salesInput) => {
+  const promises = salesInput.map((sale) => models.productsModel.findById(sale.productId));
+  const result = await Promise.all(promises);
+  const invalidProducts = result.some((product) => product === undefined);
+  return invalidProducts;
+};
+
+const addSale = async (salesInput) => {
+  const error = validateNewSale(salesInput);
   if (error.type) return error;
+  if (await verifyProduct(salesInput)) {
+    return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  }
 
-  const newSales = [];
+  const newSaleId = await models.salesModel.createSale();
 
-  await bodyInput.map(async (sale) => {
-    const newSaleId = await models.salesModel.insert(sale);
-    const newSale = await models.salesModel.findById(newSaleId);
-    newSales.push(newSale);
-  });
+  const promises = salesInput
+    .map((sale) => models.salesModel.insert(newSaleId, sale.productId, sale.quantity));
 
-  return { type: null, message: newSales };
+  await Promise.all(promises);
+
+  const message = {
+    id: newSaleId,
+    itemsSold: salesInput,
+  };
+
+  return { type: null, message };
 };
 
 module.exports = {

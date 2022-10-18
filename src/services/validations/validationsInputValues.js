@@ -1,4 +1,4 @@
-const { addProductSchema, addSaleSchema } = require('./schemas');
+const { addProductSchema, addSalesSchema } = require('./schemas');
 
 const validateNewProduct = (name) => {
   const { error } = addProductSchema.validate({ name });
@@ -13,10 +13,11 @@ const validateNewProduct = (name) => {
   return { type: null, message: '' };
 };
 
-const validateNewSale = (bodyInput) => {
-  const { error } = addSaleSchema.validate(bodyInput);
-
-  if (error) return { type: 'INVALID_VALUE', message: error.message };
+const validateNewSale = (saleInput) => {
+  const { error } = addSalesSchema.validate(saleInput);
+  if (error) {
+    return { type: error.details[0].type, message: error.message };
+  }
   return { type: null, message: '' };
 };
 
